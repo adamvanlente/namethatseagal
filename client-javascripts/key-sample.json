@@ -1,0 +1,29 @@
+var gameData = {
+
+    // If you want to create your own SeagalGame, it will need
+    // an object like this for the answers.  If you use json format, remove
+    // the comments, otherwise make your file js format.
+
+    "count": 38,                              // required
+    "movies": [{                              // required
+        "poster_url": "marked_for_death.jpg", // optional
+        "title": "Marked for Death",          // required
+        "character": "John Hatcher",          // required
+        "id": 1,                              // optional
+        "year": "1990"                        // optional
+    },{
+        "poster_url": "above_the_law.jpg",
+        "title": "Above the Law",
+        "character": "Nico Toscani",
+        "id": 2,
+        "year": "1988"
+    }...
+    // and so on
+    ...],
+    "character_names": [                      // required
+        "John Hatcher",
+        "Nico Toscani",
+        "Mason Storm",...
+        // ... and so on
+    ]
+};

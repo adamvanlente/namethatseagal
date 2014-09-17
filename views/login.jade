@@ -1,0 +1,23 @@
+extends components/base
+
+block append content
+
+  form(action="/#{msg.mode}", method="post", class="loginForm")
+
+      if (msg)
+        h3.msg= msg.mode
+
+      include components/login-form
+
+      button(type="submit", class="#{msg.mode}")= msg.mode
+
+      if (msg.mode == 'login')
+        a(href="/signup", class="signup")
+          span(class="fa fa-user")
+          label
+            | Sign up
+      else
+        a(href="/login", class="login")
+          span(class="fa fa-user")
+          label
+            | Login

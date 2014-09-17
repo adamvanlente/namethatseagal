@@ -1,0 +1,29 @@
+extends components/base
+
+block append content
+
+  if (user)
+    input(type="hidden", value="#{user.id}", id="userId")
+    input(type="hidden", value="#{user.local.name}", id="username")
+    a(href="/logout")
+      | logout
+    button.showScores
+      | show leaderboard
+  else
+    a(href="/login")
+      | login
+
+  div.buttons#buttons
+
+  div.answerStatus#answerStatus
+
+  div.currentMovie#currentMovie
+
+  div.options#options
+
+  div.gameEndedMessage#gameEndedMessage
+
+  include components/scripts
+
+  script(type="text/javascript").
+    seagalGame.onFirstLoad();
