@@ -2,16 +2,17 @@ extends components/base
 
 block append content
 
+  include components/header
+
   if (user)
     input(type="hidden", value="#{user.id}", id="userId")
     input(type="hidden", value="#{user.local.name}", id="username")
-    a(href="/logout")
+    a(href="/logout", class="user-button")
       | logout
     button.showScores
       | show leaderboard
   else
-    a(href="/login")
-      | login
+    include components/welcomeScreen
 
   div.buttons#buttons
 

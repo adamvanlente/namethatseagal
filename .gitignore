@@ -2,3 +2,5 @@ node_modules
 config
 public
 client-javascripts/a-key.js
+.sass-cache
+.DS_Store

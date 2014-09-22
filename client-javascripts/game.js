@@ -12,7 +12,7 @@ var seagalGame = {
 
         // Create a new Seagal game.
         seagalGame.game = new SeagalGame(difficulty);
-        console.log(seagalGame.game);
+
         seagalGame.resetUi();
 
         seagalGame.getUserId();
@@ -25,42 +25,61 @@ var seagalGame = {
     // Given a question, render buttons for each optional answer.
     renderQuestion: function(q) {
 
+        var htmlContent = q.movie.title +
+            '<img src="/img/' + q.movie.poster_url + '"/>';
         // Set the ui elements of the question.
-        $('#currentMovie').html(q.movie.title);
+        $('#currentMovie').html(htmlContent);
+        $('#currentMovie').addClass('animated fadeInDownBig');
+
+        $('#options').hide();
+
+        document.getElementById('answerStatus').style.display = 'block';
+        var message = 'question ' + q.current_question + '  |  ' +
+            q.current_score + ' correct';
+        $('#answerStatus').html(message);
 
         // Create a button for each option.
         for (var i = 0; i < q.answer_options.length; i++) {
+            var classList = ['abOne', 'abTwo', 'abThree', 'abFour'];
             var option = q.answer_options[i];
             var button = $('<button></button>')
                 .html(option)
-                .attr('class', 'answerButton')
+                .attr('class', 'answerButton ' + classList[i])
                 .attr('id', option);
             $('#options').append(button);
         }
 
         // Add a listener to each button that will answer the current question.
-        $('.answerButton').click(function() {
+        $('.answerButton').click(function(e) {
             var answer = $(this).attr("id");
-            seagalGame.answerQuestion(answer);
+            seagalGame.answerQuestion(answer, e);
         });
+
+        setTimeout(function() {
+          document.getElementById('options').style.display = 'block';
+          document.getElementById('options').className = 'options animated bounceInUp';
+        }, 300)
     },
 
     // Answer the currect quesion.
-    answerQuestion: function(answer) {
-        seagalGame.resetUi();
+    answerQuestion: function(answer, e) {
 
         var a = seagalGame.game.answerQuestion(answer);
 
-        var correct = a.answer_is_correct ? 'Correct' : 'Incorrect';
-        var message = 'Answer was ' + correct +
-            '.  You have ' + a.current_score + ' correct';
-        $('#answerStatus').html(message);
+        var correct = a.answer_is_correct;
+
+        var addedClass = correct ? ' animated tada' : ' animated wobble';
+        var bgColor = correct ? 'rgb(92, 156, 89)' : 'rgb(204, 89, 74)';
+        var buttonClass = e.target.className;
+        document.getElementById(e.target.id).className = buttonClass + addedClass;
+        document.getElementById(e.target.id).style.backgroundColor = bgColor;
 
         if (a.game_is_ended) {
             var message = 'The game is over.  You got ' + a.current_score +
                 ' correct.'
-            seagalGame.resetUi();
             $('#gameEndedMessage').html(message);
+
+            $('#answerStatus').hide(message);
 
             seagalGame.addGameStartButtons('gameEndedMessage');
 
@@ -71,8 +90,12 @@ var seagalGame = {
             }
 
         } else {
-            var nextQuestion = seagalGame.game.getQuestion();
-            seagalGame.renderQuestion(nextQuestion);
+            setTimeout(function(){
+              seagalGame.resetUi();
+              var nextQuestion = seagalGame.game.getQuestion();
+              seagalGame.renderQuestion(nextQuestion);
+            }, 1200);
+
         }
     },
 
@@ -80,8 +103,9 @@ var seagalGame = {
     resetUi: function(gameIsEnded) {
 
         $('#gameEndedMessage').html('');
-        $('#currentMovie').html('');
-        $('#answerStatus').html('');
+        $('#currentMovie').html('')
+          .attr('class', 'currentMovie');
+        $('#welcomeScreen').hide();
         $('#options').html('');
         $('#buttons').html('');
 
@@ -90,17 +114,17 @@ var seagalGame = {
     addGameStartButtons: function(targetDivId) {
 
         var easyButton = $('<button></button>')
-            .attr('class', 'startGame')
+            .attr('class', 'startGame easy')
             .attr('id', '0')
             .html('easy game');
 
         var medButton = $('<button></button>')
-            .attr('class', 'startGame')
+            .attr('class', 'startGame med')
             .attr('id', '1')
             .html('medium game');
 
         var hardButton = $('<button></button>')
-            .attr('class', 'startGame')
+            .attr('class', 'startGame hard')
             .attr('id', '2')
             .html('hard game');
 
@@ -167,3 +191,7 @@ $('.showScores').click(function() {
     seagalGame.showScores();
     seagalGame.showScores(seagalGame.userId);
 });
+
+window.addEventListener('load', function() {
+    new FastClick(document.body);
+}, false);

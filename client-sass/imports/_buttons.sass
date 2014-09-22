@@ -1,0 +1,28 @@
+.buttons
+
+  button
+    display: block
+    width: 255px
+    margin: 8px auto
+    padding: 12px
+    -webkit-appearance: none
+    font-family: "Lato", sans-serif
+    border: none
+    border-radius: 1px
+    box-shadow: 0 3px 1px rgb(146, 146, 146)
+    font-size: 13px
+    cursor: pointer
+    +trans($easybreezy)
+
+    &:hover
+      opacity: 0.9
+
+    &.easy
+      color: white
+      background-color: rgb(97, 97, 97)
+    &.med
+      color: white
+      background-color: rgb(70, 70, 70)
+    &.hard
+      color: white
+      background-color: rgb(45, 45, 45)

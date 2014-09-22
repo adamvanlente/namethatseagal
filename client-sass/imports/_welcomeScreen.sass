@@ -1,0 +1,59 @@
+.welcomeScreen
+  display: block
+  margin-bottom: 48px
+  +break-for(iphone)
+    margin-bottom: 12px
+  span
+    display: block
+    font-family: "Lato", sans-serif
+    width: 250px
+    margin: 12px auto
+    text-align: center
+    border-left: 4px solid white
+    border-right: 4px solid white
+    color: white
+    padding: 4px
+
+    &.one
+      display: block
+      color: #e7e7e7
+      border-color: #585858
+      background-color: #d67b34
+      box-shadow: 0 2px #c4bdbd
+      font-size: 24px
+      text-transform: uppercase
+      padding: 12px 4px
+      +break-for(iphone)
+        font-size: 16px
+    &.two
+      display: block
+      color: rgb(102, 86, 86)
+      border-color: #585858
+      background-color: rgb(182, 178, 78)
+      box-shadow: 0 2px rgb(196, 189, 189)
+    &.three
+      display: block
+      color: rgb(243, 237, 237)
+      border-color: #585858
+      background-color: rgb(94, 153, 101)
+      box-shadow: 0 2px rgb(196, 189, 189)
+
+    &.four
+      display: block
+      color: #f3eded
+      border-color: #585858
+      background-color: #607FA7
+      box-shadow: 0 2px #c4bdbd
+  a
+    color: white
+    margin: 6px 32px
+    display: block
+    border: 1px solid white
+    padding: 4px
+    text-decoration: none
+    border-radius: 1px
+    +trans($easybreezy)
+
+    &:hover
+      background: white
+      color: #607fa7
