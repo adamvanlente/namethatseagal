@@ -9,3 +9,154 @@
   padding: 6px
   text-transform: uppercase
   margin: 8px auto
+
+
+.showScores
+  display: block
+  margin: 24px auto
+  width: 256px
+  color: white
+  -webkit-appearance: none
+  border: none
+  padding: 8px
+  background: #7088BD
+  font-size: 13px
+  cursor: pointer
+  +trans($easybreezy)
+
+  &:hover
+    opacity: 0.9
+
+.leaderboard
+  display: block
+  position: absolute
+  padding: 10px
+  background: rgb(61, 61, 61)
+  min-height: 300px
+  left: 30%
+  right: 30%
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2)
+  text-align: center
+  +trans($easyslider)
+
+  +break-for(iphone)
+    left: 5px
+    right: 5px
+
+  &.visible
+    top: 125px
+    +break-for(iphone)
+      top: 100px
+
+  &.hidden
+    top: 2500px
+
+  h3
+    display: block
+    color: #fff
+    font-family: "Lato", sans-serif
+    font-weight: normal
+    text-align: center
+    padding: 0
+    margin: 4px
+
+  em
+    display: block
+    position: absolute
+    text-align: center
+    font-style: normal
+    color: white
+    font-family: "Lato", sans-serif
+    color: #333
+    background: white
+    right: 10px
+    padding: 2px 6px
+    border-radius: 2px
+    cursor: pointer
+
+  button
+    display: inline-block
+    width: 75px
+    -webkit-appearance: none
+    border: 1px solid
+    color: rgba(255, 255, 255, 0.82)
+    margin: 4px
+    margin-bottom: 12px
+    background: none
+
+    &.active
+      background: rgb(101, 145, 101)
+      cursor: pointer
+
+  span
+    display: block
+    font-family: "Lato", sans-serif
+    color: rgba(236, 226, 226, 0.85)
+    padding: 4px
+    border-bottom: 1px solid rgba(214, 209, 209, 0.29)
+    width: 90%
+    margin: 0 auto
+    font-size: 14px
+    +break-for(iphone)
+      width: 95%
+      font-size: 12px
+
+    label
+      display: inline-block
+      width: 30%
+
+  .pgButton
+    margin-top: 24px
+
+
+.why
+  display: block
+  font-family: "Lato", sans-serif
+  position: absolute
+  left: 30%
+  right: 30%
+  background: rgb(226, 226, 226)
+  font-weight: normal
+  padding: 8px
+  border: 1px solid rgb(197, 188, 188)
+  box-shadow: 0 2px 7px rgba(0,0,0,0.2)
+  +trans($easyslider)
+  +break-for(iphone)
+    left: 5px
+    right: 5px
+
+  &.visible
+    top: 125px
+    +break-for(iphone)
+      top: 85px
+  &.hidden
+    top: 2500px
+
+  h3
+    font-size: 16px
+
+  a
+    width: 50%
+    margin: 0 auto
+    color: #333
+    display: block
+    text-align: center
+  em
+    display: block
+    text-align: center
+    padding: 8px
+    font-weight: bold
+    color: gray
+    cursor: pointer
+    font-style: normal
+    background: rgba(255, 255, 255, 0.43)
+    margin: 8px
+
+.openwhy
+  display: block
+  width: 47px
+  -webkit-appearance: none
+  margin: 0 auto
+  background: none
+  border: 1px solid
+  color: #837E7E

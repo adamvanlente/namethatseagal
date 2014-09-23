@@ -2,6 +2,8 @@ extends components/base
 
 block append content
 
+  include components/header
+
   form(action="/#{msg.mode}", method="post", class="loginForm")
 
       if (msg)
@@ -13,11 +15,9 @@ block append content
 
       if (msg.mode == 'login')
         a(href="/signup", class="signup")
-          span(class="fa fa-user")
           label
             | Sign up
       else
         a(href="/login", class="login")
-          span(class="fa fa-user")
           label
             | Login

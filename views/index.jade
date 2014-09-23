@@ -4,15 +4,19 @@ block append content
 
   include components/header
 
+  include components/welcomeScreen
+
   if (user)
     input(type="hidden", value="#{user.id}", id="userId")
     input(type="hidden", value="#{user.local.name}", id="username")
-    a(href="/logout", class="user-button")
-      | logout
+    //- a(href="/logout", class="user-button")
+    //-   | logout
+    span.welcomeUser
+      | Welcome back  &nbsp;#{user.local.name}
+      a(href="/logout")
+        | logout
     button.showScores
       | show leaderboard
-  else
-    include components/welcomeScreen
 
   div.buttons#buttons
 
@@ -23,6 +27,13 @@ block append content
   div.options#options
 
   div.gameEndedMessage#gameEndedMessage
+
+  button(onclick="seagalGame.openWhy()", class="openwhy")
+    | why?
+
+  include components/why
+
+  div(class="leaderboard hidden", id="leaderboard")
 
   include components/scripts
 

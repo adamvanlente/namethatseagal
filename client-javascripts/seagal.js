@@ -7,7 +7,8 @@
  *
  *   var game = new SeagalGame(difficulty);  // 0, 1 or 2 difficulty args accepted
  *
- *   the game then has two public methods available:
+ *   The game then has two public methods available:
+ *
  *      - game.getQuestion(); // delivers the next available question: A Seagal movie title
  *            and four character names, one of which is his character name in the movie.
  *
@@ -18,6 +19,7 @@
  *
  *      The game relies on newGameData being defined in another document.  The companion file
  *      key-sample.json gives the example structure needed.
+ *
  */
 
 // Seagal game.
@@ -28,6 +30,7 @@ function SeagalGame (difficulty) {
     var mode;
     difficulty = difficulty || 0;
 
+    // Make a mutable, unique copy of the game data.
     var newGameData = JSON.parse(JSON.stringify(gameData));
 
     // Set the number of questions based on the difficulty level.
@@ -107,7 +110,7 @@ function SeagalGame (difficulty) {
         // Add three random names to guess from.  Remove the name from the main
         // list when added so as not to include duplicates.
         for (var i = 0; i < newGameData.character_names.length; i++) {
-            var randomChar = randomCharacter();
+            var randomChar = _randomCharacter();
             if (choices.indexOf(randomChar) == -1) {
                 choices.push(randomChar);
             }
@@ -119,11 +122,10 @@ function SeagalGame (difficulty) {
         }
     }
 
-    function randomCharacter() {
+    function _randomCharacter() {
         var count = newGameData.count - 1;
         var rand = Math.floor((Math.random() * count) + 1);
-        var randomCharacter = newGameData.character_names[rand];
-        return randomCharacter;
+        return newGameData.character_names[rand];
     }
 
     // Answer a question with the supplied answer argument.

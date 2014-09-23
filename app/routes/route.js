@@ -69,9 +69,12 @@ module.exports = function(app, passport) {
     // GET ALL SCORES
     // ====================================
     // ====================================
-     app.post('/allScores', function(req, res) {
+     app.post('/allScores/:type/:start', function(req, res) {
 
-          GameScore.findAll(function(doc) {
+          var type              = req.params.type;
+          var start             = req.params.start;
+
+          GameScore.findAll(type, start, function(doc) {
               res.json(doc);
           });
      });

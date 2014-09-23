@@ -43,8 +43,9 @@ var GameScore = function() {
     }
 
     // Get all of the scores.
-    var _findAll = function(callback) {
-        _model.find({}, {}, function(err, doc) {
+    var _findAll = function(type, start, callback) {
+        _model.find({ 'mode' : type}, {__v: 0}, {sort: {number_correct: -1}, skip: start, limit: 10},
+            function(err, doc) {
             if(err) {
                 fail(err);
             } else {
