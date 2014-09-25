@@ -208,7 +208,9 @@ var seagalGame = {
             url: url,
             type: 'POST',
             success: function(data){
-                console.log(data.length);
+                for (var i = 0; i < data.length; i++) {
+                  console.log(data[i]);
+                }
                 seagalGame.renderLeaderboard(data, mode);
             }
         });
