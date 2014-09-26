@@ -238,7 +238,7 @@ var seagalGame = {
 
         var totalQuestions;
         if (mode == 'medium') {
-            totalQuestions = 25;
+            totalQuestions = 20;
         } else if (mode == 'hard') {
             totalQuestions = 37;
         } else {
