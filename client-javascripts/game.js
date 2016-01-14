@@ -65,6 +65,9 @@ var seagalGame = {
 
     // Answer the currect quesion.
     answerQuestion: function(answer, e) {
+        var answerButtons = document.getElementsByClassName('answerButton');
+        disableElements(answerButtons);
+
 
         var a = seagalGame.game.answerQuestion(answer);
 
@@ -306,6 +309,12 @@ $('.showScores').click(function() {
     seagalGame.getUserId();
     seagalGame.showScores();
 });
+
+var disableElements = function(buttons) {
+    Array.prototype.forEach.call(buttons, function(button) {
+        button.disabled = true;
+    })
+}
 
 window.addEventListener('load', function() {
     new FastClick(document.body);
