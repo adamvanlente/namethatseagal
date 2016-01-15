@@ -310,9 +310,9 @@ $('.showScores').click(function() {
     seagalGame.showScores();
 });
 
-var disableElements = function(buttons) {
-    Array.prototype.forEach.call(buttons, function(button) {
-        button.disabled = true;
+var disableElements = function(elements) {
+    Array.prototype.forEach.call(elements, function(element) {
+        element.disabled = true;
     })
 }
 
